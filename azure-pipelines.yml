@@ -45,3 +45,9 @@ stages:
         repository: 'aman690 / python'
         command: 'buildAndPush'
         Dockerfile: '**/Dockerfile'
+    - task: NuGetCommand@2
+      inputs:
+        command: 'restore'
+        restoreSolution: '**/*.sln'
+        feedsToUse: 'select'
+        vstsFeed: 'aa2c3146-9248-45db-8b9d-3534f920b5bd/3534b62a-9ff2-4f52-ad06-512b9dcb6fa7'
