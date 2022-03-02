@@ -2,6 +2,7 @@
 
 
 
+
 # Build a Docker image
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
@@ -40,6 +41,10 @@ stages:
         dockerfile: '$(Build.SourcesDirectory)/Dockerfile'
         tags: |
           $(tag)
+    - task: SonarQubePrepare@5
+      inputs:
+        SonarQube: 'sonarqube'
+        scannerMode: 'Other'
     - task: SonarQubePublish@5
       inputs:
         pollingTimeoutSec: '300'
